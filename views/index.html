@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Url Shortener</title>
+</head>
+<body>
+    <h1>Url Shortener | <a href="/Clear">Clear</a></h1>
+    <hr>
+    <form method="post" action="/">
+        <label>
+            <textarea name="url" rows="1" cols="200" placeholder="Enter a URL to shorten."></textarea>
+            <br>
+            <button type="submit">Submit</button>
+        </label>
+    </form>
+    <hr>
+    <h2>Currently Active Links</h2>
+    {{ range $_, $urls := .urls }}
+        <h4>
+            <span>
+                 {{ $urls.LongURL }}
+            </span>
+            :
+            <a href="//{{ $urls.ShortURL }}">
+                {{ $urls.ShortURL }}
+            </a>
+            ||
+            <a href="/d/{{ $urls.ShortURL }}">X</a>
+        </h4>
+    {{ end }}
+</body>
+</html>
